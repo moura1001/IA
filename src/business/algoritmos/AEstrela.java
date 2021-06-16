@@ -35,23 +35,20 @@ public class AEstrela {
 
 		GerenteNos.getInstancia().preencherNosComValorDaHeuristica(pontoDestino.getId());
 		
-		PriorityQueue<No> menorValorFDeN = new PriorityQueue<No>( 
-				new Comparator<No>(){
-					public int compare(No i, No j){
+		PriorityQueue<No> menorValorFDeN = new PriorityQueue<>(
+				(No i, No j) -> {
 						if(i.valorFDeN > j.valorFDeN){
 							return 1;
 						}
-						
+
 						else if (i.valorFDeN < j.valorFDeN){
 							return -1;
 						}
-			
+
 						else{
 							return 0;
 						}
 					}
-	
-				}
 		);
 
 		//custo from start
@@ -61,7 +58,7 @@ public class AEstrela {
 
 		boolean destino = false;
 
-		while((!menorValorFDeN.isEmpty())&&(!destino)){
+		while( (!menorValorFDeN.isEmpty()) && (!destino) ){
 
 			No noAtual = menorValorFDeN.poll();
 
@@ -90,14 +87,14 @@ public class AEstrela {
 				/*else if filho node is not in queue or 
                                 newer f_score is lower*/
 
-				else if((!menorValorFDeN.contains(filho)) || 
-						(fDeNAux < filho.valorFDeN)){
+				else if( ( !menorValorFDeN.contains(filho) ) ||
+						 ( fDeNAux < filho.valorFDeN) ){
 
 					filho.pai = noAtual;
 					filho.valorGDeN = gDeNAux;
 					filho.valorFDeN = fDeNAux;
 
-					if(menorValorFDeN.contains(filho)){
+					if( menorValorFDeN.contains(filho) ){
 						menorValorFDeN.remove(filho);
 					}
 
