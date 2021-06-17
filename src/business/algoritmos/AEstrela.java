@@ -51,7 +51,6 @@ public class AEstrela {
 					}
 		);
 
-		//custo from start
 		noOrigem.valorGDeN = 0;
 
 		menorValorFDeN.add(noOrigem);
@@ -66,7 +65,7 @@ public class AEstrela {
 
 			if(noAtual.valor.equals(noDestino.valor)){
 				destino = true;
-				//break;
+				break;
 			}
 
 			for(Aresta a : noAtual.vizinhos){
@@ -76,31 +75,15 @@ public class AEstrela {
 				double fDeNAux = gDeNAux + filho.valorHDeN;
 
 
-				/*if filho node has been evaluated and 
-                                the newer f_score is higher, skip*/
-
-				if((filho.visitado) && 
-						(fDeNAux >= filho.valorFDeN)){
+				if(filho.visitado){
 					continue;
-				}
+				}				
 
-				/*else if filho node is not in queue or 
-                                newer f_score is lower*/
+				filho.pai = noAtual;
+				filho.valorGDeN = gDeNAux;
+				filho.valorFDeN = fDeNAux;
 
-				else if( ( !menorValorFDeN.contains(filho) ) ||
-						 ( fDeNAux < filho.valorFDeN) ){
-
-					filho.pai = noAtual;
-					filho.valorGDeN = gDeNAux;
-					filho.valorFDeN = fDeNAux;
-
-					if( menorValorFDeN.contains(filho) ){
-						menorValorFDeN.remove(filho);
-					}
-
-					menorValorFDeN.add(filho);
-
-				}
+				menorValorFDeN.add(filho);
 
 			}
 			

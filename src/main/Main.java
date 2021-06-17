@@ -18,8 +18,8 @@ public class Main{
 		MatrizDeDistancias distancias = gerentePontos.getMatrizDeDistancias();
 		ListaDeAdjacencia vizinhos = gerentePontos.getListaDeAdjacencia();*/
 		
-		int idOrigem = 24 - 1;
-		int idDestino = 16 - 1;
+		int idOrigem = 34 - 1;
+		int idDestino = 5 - 1;
 		
 		PontoDeOnibus origem = GerentePontosDeOnibus.getInstancia().getPontoDeOnibus(idOrigem);
 		PontoDeOnibus destino = GerentePontosDeOnibus.getInstancia().getPontoDeOnibus(idDestino);
